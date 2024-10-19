@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            color: #ecf0f1;
+            position: relative;
+            padding: 20px;
+            max-width: 90%;
+        }
+
+        .coming-soon {
+            font-size: clamp(2rem, 10vw, 5rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            animation: glow 2s ease-in-out infinite alternate;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #3498db, 0 0 35px #3498db, 0 0 40px #3498db, 0 0 50px #3498db, 0 0 75px #3498db;
+            }
+            to {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #3498db, 0 0 70px #3498db, 0 0 80px #3498db, 0 0 100px #3498db, 0 0 150px #3498db;
+            }
+        }
+
+        .back-btn {
+            margin-top: 2rem;
+            display: inline-block;
+            padding: clamp(10px, 3vw, 12px) clamp(20px, 5vw, 24px);
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-size: clamp(14px, 3vw, 16px);
+        }
+
+        .back-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-btn:active {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            opacity: 0.3;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease-out;
+            z-index: -1;
+        }
+
+        .back-btn:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes moveParticles {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100vw);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .coming-soon {
+                letter-spacing: 0.05em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="coming-soon">Coming Soon</h1>
+        <a href="index.html" class="back-btn">Kembali ke Halaman Utama</a>
+    </div>
+
+    <script>
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            const size = Math.random() * 5 + 2;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.top = `${Math.random() * 100}vh`;
+            
+            const duration = Math.random() * 3 + 2;
+            particle.style.animation = `moveParticles ${duration}s linear infinite`;
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, duration * 1000);
+        }
+
+        setInterval(createParticle, 100);
+    </script>
+</body>
+</html>

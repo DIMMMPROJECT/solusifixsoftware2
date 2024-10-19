@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price List Sewa Tools Berbayar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1e2a3a;
+            color: #e0e6ed;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+        }
+
+        .price-card {
+            background-color: #2c3e50;
+            border: none;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .price-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .price-title {
+            color: #3498db;
+            font-weight: 600;
+        }
+
+        .price {
+            color: #2ecc71;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .btn-whatsapp, .btn-telegram {
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-whatsapp {
+            background-color: #25d366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128c7e;
+            color: white;
+        }
+
+        .btn-telegram {
+            background-color: #0088cc;
+            color: white;
+        }
+
+        .btn-telegram:hover {
+            background-color: #006699;
+            color: white;
+        }
+
+        .footer {
+            background-color: #1e2a3a;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .footer .social-icon {
+            color: #e0e6ed;
+            margin-right: 15px;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer .social-icon:hover {
+            color: #3498db;
+            transform: scale(1.2);
+        }
+
+        .price-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px 15px 0 0;
+            transition: transform 0.3s ease;
+        }
+
+        .price-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .btn-back {
+            background-color: #3498db;
+            color: white;
+            font-weight: 600;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            padding: 10px 20px;
+        }
+
+        .btn-back:hover {
+            background-color: #2980b9;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .main-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #3498db;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .main-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: #3498db;
+            margin: 15px auto 0;
+        }
+
+        .alert-warning {
+            background-color: #f39c12;
+            color: #1e2a3a;
+            border: none;
+            border-radius: 10px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-5">
+        <h1 class="main-title animate-fadeInUp">PRICE LIST SEWA TOOLS BERBAYAR</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-4 animate-fadeInUp" style="animation-delay: 0.1s;">
+                <div class="price-card mb-4 animate-float">
+                    <img src="img/CH.jpg" alt="Channel SolusiFix" class="img-fluid">
+                    <div class="p-4">
+                        <h3 class="price-title">Channel</h3>
+                        <p style="color: #bdc3c7; line-height: 1.6;">
+                            📢 <strong>Selamat datang di channel resmi @SolusiFix!</strong><br>
+                            Di sini, Anda akan menemukan berbagai informasi dan penawaran terbaik seputar alat teknologi.<br>
+                            Pastikan Anda selalu mengikuti channel ini untuk mendapatkan solusi yang tepat dan terpercaya.
+                        </p>
+                        <a href="https://t.me/SolusiFix" class="btn btn-telegram w-100 mt-3 animate-pulse">
+                            <i class="fab fa-telegram"></i> Kunjungi Channel
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-4 animate-fadeInUp" style="animation-delay: 0.2s;">
+                <div class="price-card mb-4 animate-float">
+                    <div class="p-4">
+                        <h3 class="price-title">Android Multi Tool</h3>
+                        <p class="price">6 JAM = 37k</p>
+                        <a href="https://wa.me/+6289515001716?text=Halo%20Admin,%20Saya%20ingin%20menyewa%20Android%20Multi%20Tool%20untuk%206%20jam.%20Bagaimana%20caranya?"
+                            class="btn btn-whatsapp w-100 mt-3 animate-pulse">
+                            <i class="fab fa-whatsapp"></i> Chat untuk Sewa
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 animate-fadeInUp" style="animation-delay: 0.3s;">
+                <div class="price-card mb-4 animate-float">
+                    <div class="p-4">
+                        <h3 class="price-title">Unlock Tool</h3>
+                        <p class="price">6 JAM = 27k</p>
+                        <p class="price">3 JAM = 20k</p>
+                        <a href="https://wa.me/+6289515001716?text=Halo%20Admin,%20Saya%20ingin%20menyewa%20Unlock%20Tool%20untuk%20"
+                            class="btn btn-whatsapp w-100 mt-3 animate-pulse">
+                            <i class="fab fa-whatsapp"></i> Chat untuk Sewa
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-4 animate-fadeInUp" style="animation-delay: 0.4s;">
+                <div class="price-card mb-4 animate-float">
+                    <div class="p-4">
+                        <h3 class="price-title">CONTACT ME</h3>
+                        <a href="https://wa.me/+6289515001716?text=Halo%20Admin,%20Saya%20ingin%20bertanya%20tentang%20"
+                           class="btn btn-whatsapp w-100 mt-3 d-flex align-items-center justify-content-center animate-pulse">
+                            <i class="fab fa-whatsapp" style="font-size: 1.5rem; margin-right: 10px;"></i> 
+                            Chat di WhatsApp
+                        </a>
+                        <a href="https://t.me/DimMagic" class="btn btn-telegram w-100 mt-3 d-flex align-items-center justify-content-center animate-pulse">
+                            <i class="fab fa-telegram" style="font-size: 1.5rem; margin-right: 10px;"></i>
+                            Chat di Telegram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4 mb-5 animate-fadeInUp" style="animation-delay: 0.5s;">
+            <a href="index.html" class="btn btn-back animate-pulse">
+                <i class="fas fa-arrow-left"></i> Kembali ke Beranda
+            </a>
+        </div>
+
+        <div class="alert alert-warning mt-5 animate-fadeInUp" style="animation-delay: 0.6s;">
+            <p class="text-center mb-0" style="font-weight: 600;">
+                ⚠️ <strong>Perhatian!</strong> Hati-hati terhadap penipuan yang mengatasnamakan kami!
+                Kami hanya memiliki saluran resmi. Pastikan Anda berkomunikasi melalui kontak yang tertera di atas.
+            </p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p>&copy; 2024 SolusiFix. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="https://t.me/DimNotBad" class="social-icon"><i class="fab fa-telegram"></i></a>
+                    <a href="coomingsoon.html" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/+6289515001716?text=Halo%20Admin,%20Saya%20ingin%20bertanya%20tentang%20" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
