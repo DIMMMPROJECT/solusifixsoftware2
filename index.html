@@ -1,277 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <title>Solusi Fix Software</title>
+    <style>
+      :root {
+        --primary-color: #0d6efd;
+        --dark-color: #0a0f18;
+        --card-bg: linear-gradient(145deg, #111927, #0c1117);
+        --neon-glow: 0 0 10px rgba(13, 110, 253, 0.5), 0 0 20px rgba(13, 110, 253, 0.3), 0 0 30px rgba(13, 110, 253, 0.2);
+        --glass-effect: rgba(255, 255, 255, 0.05);
+        --border-glow: rgba(13, 110, 253, 0.3);
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <title>Solusi Fix Software </title>
-</head>
-<!--navbar start-->
+      body {
+        background: var(--dark-color);
+        color: #fff;
+        font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
 
-<body class="bg-dark">
-  <nav class="navbar bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand text-white " data-aos="fade-right" href="#">
-        <img src="img/background.png" alt="Logo" width="35" height="30" class="d-inline-block align-text-top">
-        Solusi Fix Software
-      </a>
-    </div>
-  </nav>
-  <!--navbar end-->
-  <figure class="figure bg-dark d-flex flex-column align-items-center container-fluid" data-aos="flip-down"
-    style="overflow-x: hidden; max-width: 100vw;">
-    <img src="img/background.png" class="figure-img img-fluid rounded w-100" alt="..."
-      style="max-width: 100%; height: auto; object-fit: cover;">
-    <figcaption class="figure-caption bg-dark text-light text-center p-3 w-100" data-aos="fade-left"
-      id="animatedTextFade">
-      <!-- Tambahkan teks di sini -->
-    </figcaption>
-  </figure>
+      .gradient-card {
+        background: var(--card-bg);
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--border-glow);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+      }
 
+      .gradient-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(13, 110, 253, 0.1), transparent);
+        transition: 0.5s;
+      }
 
+      .gradient-card:hover::before {
+        left: 100%;
+      }
 
-  <style>
-    .fade-in {
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-    }
+      .gradient-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: var(--neon-glow);
+      }
 
-    .fade-in.visible {
-      opacity: 1;
-    }
-            
-   
-    /* Responsiveness for image */
-   
-  </style>
+      .service-icon {
+        font-size: 3.5rem;
+        background: linear-gradient(45deg, var(--primary-color), #00ff88);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1.5rem;
+        filter: drop-shadow(0 0 8px rgba(13, 110, 253, 0.5));
+        transition: all 0.3s ease;
+      }
 
-  <script>
-    const text = "UBL Flashing memungkinkan pengguna membuka kunci bootloader perangkat Android mereka, memberi akses untuk modifikasi lebih lanjut. Dengan ini, pengguna dapat menginstal Custom ROM, yang merupakan sistem operasi Android yang dimodifikasi untuk meningkatkan kinerja dan menawarkan fitur tambahan. Kami menyediakan pilihan Custom ROM terbaik untuk meningkatkan pengalaman pengguna dan memperpanjang usia perangkat Anda,Untuk layanan jasa Lainnya Huungi Kami";
+      .gradient-card:hover .service-icon {
+        transform: scale(1.1) rotate(5deg);
+      }
 
-    const element = document.getElementById("animatedTextFade");
+      .hero-section {
+        min-height: 80vh;
+        background: radial-gradient(circle at center, #1a2537 0%, var(--dark-color) 100%);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-    // Fungsi untuk mengisi teks dengan animasi
-    function typeWriter() {
-      element.innerHTML = '';  // Bersihkan elemen sebelum memulai animasi
-      const words = text.split(" "); // Pisahkan teks menjadi kata-kata
-      words.forEach((word, i) => {
-        const span = document.createElement("span");
-        span.textContent = word + " ";
-        span.classList.add("fade-in");
-        element.appendChild(span);
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: repeating-linear-gradient(45deg, var(--glass-effect), var(--glass-effect) 2px, transparent 2px, transparent 8px);
+        animation: moveBackground 20s linear infinite;
+      }
 
-        // Tambahkan delay untuk setiap kata agar muncul satu per satu
-        setTimeout(() => {
-          span.classList.add("visible");
-        }, i * 300); // 300ms delay per kata
-      });
-    }
-
-    // Intersection Observer untuk memulai animasi saat elemen muncul di layar
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          typeWriter(); // Memulai animasi jika elemen terlihat di viewport
+      @keyframes moveBackground {
+        0% {
+          transform: translate(-50%, -50%) rotate(0deg);
         }
-      });
-    });
+        100% {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
 
-    // Mulai memantau elemen figcaption
-    observer.observe(document.getElementById('animatedTextFade'));
-  </script>
+      navbar {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
 
-  <body class="bg-dark text-white">
-    <div class="d-flex justify-content-center align-items-center vh-100">
-      <div class="d-flex flex-column flex-md-row text-center">
-        <!-- Jasa UBL -->
-        <div class="d-flex flex-column align-items-center mx-4 mb-4 mb-md-0">
-          <i class="fas fa-unlock text-primary display-1 mb-2" data-aos="fade-right" data-aos-duration="1000"
-            data-aos-delay="200"></i>
-          <h3 class="h4 font-weight-bold text-white" data-aos="fade-right">UBL</h3>
-          <p class="text-white" data-aos="fade-right">
-            Buka akses bootloader untuk pengembangan dan kustomisasi lebih lanjut.
-            <strong> Hubungi kami hari ini dan ubah cara Anda menggunakan smartphone</strong>
-          </p>
-        </div>
-        <!-- Jasa Custom ROM -->
-        <div class="d-flex flex-column align-items-center mx-4 mb-4 mb-md-0">
-          <i class="fas fa-mobile-alt text-primary display-1 mb-2" data-aos="fade-up" data-aos-duration="1000"
-            data-aos-delay="200"></i>
-          <h3 class="h4 font-weight-bold text-white" data-aos="fade-up">Custom ROM</h3>
-          <p class="text-white" data-aos="fade-up">
-            Instalasi Custom ROM untuk pengalaman perangkat yang lebih optimal.Rasakan perbedaan signifikan dalam
-            performa dan kustomisasi perangkat Anda dengan menginstal Custom
-            ROM.
-            <strong> Hubungi kami hari ini dan ubah cara Anda menggunakan smartphone</strong>
-          </p>
-        </div>
-        <!-- Jasa Flashing -->
-        <div class="d-flex flex-column align-items-center mx-4 mb-4 mb-md-0">
-          <i class="fas fa-sync-alt text-primary display-1 mb-2" data-aos="fade-left" data-aos-duration="1000"
-            data-aos-delay="300"></i>
-          <h3 class="h4 font-weight-bold text-white" data-aos="fade-left">Flashing</h3>
-          <p class="text-white" data-aos="fade-left">
-            Proses flashing perangkat untuk perbaikan atau upgrade sistem.Proses flashing sangat mudah dan cepat. Dengan
-            langkah-langkah sederhana, Anda dapat mengubah firmware perangkat Anda dalam hitungan detik!
-            <strong>Perangkat Anda kembali normal dalam sekejap!</strong>
-          </p>
+      .nav-link {
+        color: #fff;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: #00ff88; /* Change to your desired hover color */
+      }
+
+      .navbar-brand {
+        color: #fff;
+      }
+      .navbar-toggler-icon {
+        filter: brightness(0) invert(1);
+      }
+      .btn-custom {
+        background: linear-gradient(45deg, var(--primary-color), #0056b3);
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        color: white;
+        text-decoration: none;
+      }
+
+      .btn-custom::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        transition: width 0.3s ease;
+        z-index: -1;
+      }
+
+      .btn-custom:hover::before {
+        width: 100%;
+      }
+
+      .btn-custom:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--neon-glow);
+      }
+
+      .service-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        padding: 2rem;
+        margin-top: 2rem;
+      }
+
+      .contact-container {
+        max-width: 1200px;
+        margin: 100px auto 0;
+        padding: 40px 20px;
+        position: relative;
+      }
+
+      .contact-form {
+        background: var(--card-bg);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--border-glow);
+        backdrop-filter: blur(10px);
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-glow);
+        border-radius: 10px;
+        padding: 15px;
+        color: #fff;
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: var(--primary-color);
+        box-shadow: var(--neon-glow);
+        outline: none;
+      }
+
+      .form-group textarea {
+        height: 150px;
+        resize: vertical;
+      }
+
+      .footer {
+        background: var(--card-bg);
+        padding: 3rem 0;
+        margin-top: 3rem;
+        border-top: 1px solid var(--border-glow);
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .social-links a {
+        display: inline-block;
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+        border-radius: 50%;
+        background: var(--glass-effect);
+        color: #fff;
+        text-align: center;
+        transition: all 0.3s ease;
+        border: 1px solid var(--border-glow);
+      }
+
+      .social-links a:hover {
+        background: var(--primary-color);
+        transform: translateY(-5px) rotate(360deg);
+        box-shadow: var(--neon-glow);
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          flex-direction: column;
+          text-align: center;
+          gap: 15px;
+        }
+
+        .hero-section {
+          min-height: 60vh;
+          padding: 2rem 1rem;
+          margin-top: 80px;
+        }
+
+        .gradient-card {
+          margin-bottom: 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="color: #fff">
+      <div class="container">
+        <a class="navbar-brand" href="#" data-aos="fade-right">
+          <i class="fas fa-tools me-2"></i>
+          Solusi Fix Software
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="#home">Home</a>
+            <a class="nav-link" href="#services">Services</a>
+            <a class="nav-link" href="#contact">Contact</a>
+          </div>
         </div>
       </div>
-    </div>
-  </body>
+    </nav>
 
+    <!-- Hero Section -->
+    <section class="hero-section" id="home" data-aos="fade-up">
+      <div class="container text-center">
+        <h1 class="display-4 mb-4">Welcome to Fix Software Solutions</h1>
+        <p class="lead mb-4">  Solusi Lengkap untuk Unlock Bootloader dengan
+                    Layanan Terbaik dan Terpercaya!</p>
+        <a href="#services" class="btn btn-custom">Explore Services</a>
+      </div>
+    </section>
 
+    <!-- Services Section -->
+    <section id="services" class="container">
+      <div class="service-grid">
+        <!-- UBL Service -->
+        <div class="gradient-card p-4" data-aos="fade-up">
+          <i class="fas fa-unlock service-icon"></i>
+          <h3>UBL Service</h3>
+          <p>Unlock bootloader for advanced customization and development options.</p>
+          <a href="https://wa.me/+6289515001716?text=Halo Min Saya Ingin Menanyakan Harga UBL" class="btn btn-custom mt-3">Contact Us</a>
+        </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="card col bg-dark"
-        style="width: 16rem; backdrop-filter: blur(30px); box-shadow: 0px 0px 10px rgba(3, 3, 68, 0.664); border: 1.5px solid rgba(255, 255, 255, 0.18);"
-        data-aos="fade-up" data-aos-delay="150" data-aos-offset="100">
-        <img src="img/background.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-white">UBL</h5>
-          <p class="card-text text-white">Unlock Bootloader Devices</p>
-          <a href="https://wa.me/+6289515001716?text=Halo Min Saya Ingin Menanyakan Harga UBL (SEBUTKAN TIPE HP)!"
-            class="btn btn-primary" target="_blank" rel="noopener noreferrer" data-tilt
-            data-tilt-scale="1.1">CHECKOUT</a>
+        <!-- Custom ROM -->
+        <div class="gradient-card p-4" data-aos="fade-up" data-aos-delay="100">
+          <i class="fas fa-mobile-alt service-icon"></i>
+          <h3>Custom ROM</h3>
+          <p>Experience enhanced performance with our custom ROM installation service.</p>
+          <a href="https://wa.me/+6289515001716?text=Halo Min Saya Ingin Menanyakan Harga Custom ROM" class="btn btn-custom mt-3">Contact Us</a>
+        </div>
+
+        <!-- Flashing -->
+        <div class="gradient-card p-4" data-aos="fade-up" data-aos-delay="200">
+          <i class="fas fa-sync-alt service-icon"></i>
+          <h3>Flashing Service</h3>
+          <p>Professional device flashing for repairs and system upgrades.</p>
+          <a href="https://wa.me/+6289515001716?text=Halo Min Saya Ingin Menanyakan Harga Flashing" class="btn btn-custom mt-3">Contact Us</a>
+        </div>
+
+        <!-- FRP Bypass -->
+        <div class="gradient-card p-4" data-aos="fade-up" data-aos-delay="300">
+          <i class="fas fa-unlock-alt service-icon"></i>
+          <h3>FRP Bypass</h3>
+          <p>Remove Google FRP Lock from any Android device safely.</p>
+          <a href="https://wa.me/+6289515001716?text=Halo Min Saya Ingin Menanyakan Harga Bypass FRP" class="btn btn-custom mt-3">Contact Us</a>
         </div>
       </div>
-      <div class="card col bg-dark"
-        style="width: 16rem; backdrop-filter: blur(30px); box-shadow: 0px 0px 10px rgba(0, 0, 255, 0.5); border: 1.5px solid rgba(255, 255, 255, 0.18);"
-        data-aos="fade-up" data-aos-delay="250" data-aos-offset="140">
-        <img src="img/background.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-white">CUSROM</h5>
-          <p class="card-text text-white">Custom Rom Your Devices</p>
-          <a href="https://wa.me/+6289515001716?text=Halo Min Saya Ingin Menanyakan Harga Custom Rom (SEBUTKAN TIPE HP)!"
-            class="btn btn-primary" target="_blank" rel="noopener noreferrer" data-tilt
-            data-tilt-scale="1.1">CHECKOUT</a>
-        </div>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <!--produk3-->
-  <div class="container">
-    <div class="row">
-      <div class="card col bg-dark"
-        style="width: 16rem; backdrop-filter: blur(30px); box-shadow: 0px 0px 10px rgba(0, 0, 255, 0.5); border: 1.5px solid rgba(255, 255, 255, 0.18);"
-        data-aos="fade-up" data-aos-delay="250" data-aos-offset="180">
-        <img src="img/background.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-white">Flashing</h5>
-          <p class="card-text text-white">Flashing Your Android Devices (UNBRICK) </p>
-          <a href="https://wa.me/+6289515001716?text=Halo Min Saya Ingin Menanyakan Harga Flashing (SEBUTKAN TIPE HP)!"
-            class="btn btn-primary" target="_blank" rel="noopener noreferrer" data-tilt
-            data-tilt-scale="1.1">CHECKOUT</a>
-        </div>
-      </div>
-      <div class="card col bg-dark"
-        style="width: 16rem; backdrop-filter: blur(30px); box-shadow: 0px 0px 10px rgba(0, 0, 255, 0.5); border: 1.5px solid rgba(255, 255, 255, 0.18);"
-        data-aos="fade-up" data-aos-delay="300" data-aos-offset="150">
-        <img src="img/background.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-white">BYPAS FRP</h5>
-          <p class="card-text text-white">Remove Google FRP Lock on Any Phones</p>
-
-          <a href="https://wa.me/+6289515001716?text=Halo Min Saya Ingin Menanyakan Harga Bypas Frp (SEBUTKAN TIPE HP)!"
-            class="btn btn-primary" target="_blank" rel="noopener noreferrer" data-tilt
-            data-tilt-scale="1.1">CHECKOUT</a>
-        </div>
+    <!-- Contact Section -->
+    <section id="contact" class="contact-container">
+      <div class="text-center mb-5">
+        <h1 class="display-4" style="color: var(--primary-color)">Get in Touch</h1>
+        <p class="lead">Have a question or want to work together? Drop me a message!</p>
       </div>
 
-    </div>
-  </div>
-
-  <!--sewa tools-->
-  <figure class="figure bg-dark d-flex flex-column align-items-center container-fluid" data-aos="zoom-in-up">
-    <img src="img/background.png" class="figure-img img-fluid rounded w-100" alt="..."
-      style="max-width: 100%; height: auto; object-fit: cover;">
-    <figcaption class="figure-caption bg-dark text-light text-center p-3 w-100">
-      <h3>LIST SEWA TOOLS BERBAYAR</h3>
-    </figcaption>
-    <div class="d-flex justify-content-center w-100 mb-3">
-      <a href="tools.html" class="btn btn-primary" id="Button">KLIK DISINI</a>
-    </div>
-  </figure>
-
-
-  <figure class="figure bg-dark d-flex flex-column align-items-center container-fluid" data-aos="zoom-in-up">
-    <img src="img/background.png" class="figure-img img-fluid rounded w-100" alt="..."
-      style="max-width: 100%; height: auto; object-fit: cover;">
-    <figcaption class="figure-caption bg-dark text-light text-center p-3 w-100">
-      <h3>TESTIMONI PELANGGAN KAMI</h3>
-    </figcaption>
-    <div class="d-flex justify-content-center w-100 mb-3">
-      <a href="testi.html" class="btn btn-primary" id="testiButton">KLIK DISINI</a>
-    </div>
-  </figure>
-
-<!--testi-->
-  <footer class="bg-dark text-center text-lg-start">
-    <div class="container p-4">
       <div class="row">
-        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase text-white" data-aos-anchor-placement="center-center">Syarat & Ketentuan</h5>
-          <p class="text-light">Memiliki laptop/komputer (minimal Windows 7 SP1), memiliki koneksi internet yang
-            cukup,
-            disarankan menggunakan wifi. Kabel masing-masing HP Android atau iPhone yang bisa tersambung ke laptop,
-            serta memiliki TeamViewer atau AnyDesk yang bisa diunduh gratis dari Google jika belum punya.</p>
+        <div class="col-md-8 mx-auto">
+          <form class="contact-form" data-aos="fade-up">
+            <div class="form-group">
+              <input type="text" placeholder="Your Name" required />
+            </div>
 
+            <div class="form-group">
+              <input type="email" placeholder="Your Email" required />
+            </div>
+
+            <div class="form-group">
+              <input type="text" placeholder="Subject" required />
+            </div>
+
+            <div class="form-group">
+              <textarea placeholder="Your Message" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-custom w-100">Send Message</button>
+          </form>
         </div>
-        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase text-white" data-aos-anchor-placement="center-center">Terima Kasih</h5>
-          <p class="text-light">Terima kasih telah mempercayakan layanan kami untuk kebutuhan Anda. Kami berkomitmen
-            untuk terus memberikan pelayanan terbaik. Jika Anda memiliki pertanyaan atau memerlukan bantuan lebih
-            lanjut, jangan ragu untuk menghubungi kami.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-6 mb-4">
+            <h5>About Us</h5>
+            <p>Professional software solutions for all your device needs. We provide quality service with guaranteed satisfaction.</p>
+          </div>
+          <div class="col-md-6 mb-4">
+            <h5>Connect With Us</h5>
+            <div class="social-links mt-3">
+              <a href="https://wa.me/+6289515001716"><i class="fab fa-whatsapp"></i></a>
+              <a href="https://t.me/DimNotBad"><i class="fab fa-telegram"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
         </div>
-
-
       </div>
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <h5 class="text-uppercase text-white">contact me</h5>
-        <ul class="list-unstyled">
-          <li>
-            <a href="https://wa.me/+6289515001716?text= Halo Min Saya Ingin Bertanya!" class="text-primary" data-tilt
-              data-tilt-scale="1.1">
-              <i class="fab fa-whatsapp"></i> WhatsApp
-            </a>
-          </li>
-          <li>
-            <a href="https://t.me/DimNotBad?text=Halo Min Saya Ingin Bertanya!" class="text-primary" data-tilt
-              data-tilt-scale="1.1">
-              <i class="fab fa-telegram-plane"></i> Telegram
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0" data-aos-anchor-placement="center-center">
-        <h5 class="text-uppercase text-white">Follow Us</h5>
-        <a href="https://t.me/SolusiFix" class="text-primary me-3 " data-tilt data-tilt-scale="1.1">
-          <i class="fab fa-telegram-plane"></i> Telegram
-        </a>
-        <a href="coomingsoon.html" class="text-primary" data-tilt data-tilt-scale="1.1">
-          <i class="fab fa-instagram"></i> Instagram
-        </a>
-      </div>
-    </div>
-    </div>
-  </footer>
+    </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-  <script>
-    AOS.init();
-  </script>
-  <script type="text/javascript" src="vanilla-tilt.min.js"></script>
-</body>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100,
+      });
+    </script>
+  </body>
 </html>
-<!--SPECIAL THANKS CHAT GPT FOR HELP ME-->
